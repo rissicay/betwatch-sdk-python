@@ -76,6 +76,7 @@ class BookmakerMarket:
     _bookmaker: Union[Bookmaker, str] = field(metadata={"name": "bookmaker"})
     selection_id: Optional[str] = field(metadata={"name": "selectionId"}, default=None)
     race_id: Optional[str] = field(metadata={"name": "raceId"}, default=None)
+    opening_price: Optional[float] = field(metadata={"name": "openingPrice"}, default=None)
     _fixed_win: Union[None, Price, str] = field(
         metadata={"name": "fixedWin"}, default=None
     )

@@ -33,11 +33,11 @@ def get_race_query(projection: RaceProjection) -> str:
                 + ", bookmakersWithFlucs: "
                 + bookmakers_with_flucs
                 + ") { id bookmaker "
-                + "fixedWin { price lastUpdated "
+                + "fixedWin { price openingPrice lastUpdated "
                 + ("flucs { price lastUpdated } " if projection.flucs else "")
                 + "} "
                 + (
-                    "fixedPlace { price lastUpdated "
+                    "fixedPlace { price openingPrice lastUpdated "
                     + ("flucs { price lastUpdated } " if projection.flucs else "")
                     + "} "
                     if projection.place_markets
@@ -97,6 +97,7 @@ def subscription_race_price_updates(projection: RaceProjection) -> DocumentNode:
         bookmaker
         fixedWin {
           price
+          openingPrice
           lastUpdated
           """
         + (
@@ -113,6 +114,7 @@ def subscription_race_price_updates(projection: RaceProjection) -> DocumentNode:
         + (
             """fixedPlace {
           price
+          openingPrice
           lastUpdated
           """
             + (
