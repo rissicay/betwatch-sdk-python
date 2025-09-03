@@ -29,6 +29,7 @@ class Fluc:
 class Price:
     price: float | None
     _last_updated: str = field(metadata={"name": "lastUpdated"})
+    opening_price: float | None = field(metadata={"name": "openingPrice"}, default=None)
 
     flucs: list[Fluc] | None = field(default_factory=list)
 
